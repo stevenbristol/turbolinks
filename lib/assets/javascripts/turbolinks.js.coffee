@@ -74,7 +74,8 @@ changePage = (title, body, runScripts) ->
   document.title = title
   document.documentElement.replaceChild body, document.body
   executeScriptTags() if runScripts
-  currentState = window.history.state
+  if window.history.state
+    currentState = window.history.state
   triggerEvent 'page:change'
 
 executeScriptTags = ->
